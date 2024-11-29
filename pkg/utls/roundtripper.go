@@ -17,7 +17,7 @@ import (
 	"sync"
 	"time"
 
-	utls "github.com/refraction-networking/utls"
+	utls "github.com/metacubex/utls"
 	"golang.org/x/net/http2"
 	"golang.org/x/net/proxy"
 )

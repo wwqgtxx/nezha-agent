@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"testing"
 
-	utls "github.com/refraction-networking/utls"
+	utls "github.com/metacubex/utls"
 
 	"github.com/wwqgtxx/nezha-agent/pkg/util"
 	utlsx "github.com/wwqgtxx/nezha-agent/pkg/utls"

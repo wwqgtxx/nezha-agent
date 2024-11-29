@@ -20,11 +20,10 @@ import (
 
 	"github.com/blang/semver"
 	"github.com/ebi-yade/altsvc-go"
+	utls "github.com/metacubex/utls"
 	"github.com/nezhahq/go-github-selfupdate/selfupdate"
 	"github.com/nezhahq/service"
 	ping "github.com/prometheus-community/pro-bing"
-	"github.com/quic-go/quic-go/http3"
-	utls "github.com/refraction-networking/utls"
 	"github.com/shirou/gopsutil/v4/host"
 	"github.com/spf13/cobra"
 	"google.golang.org/grpc"
@@ -87,13 +86,6 @@ var (
 			return http.ErrUseLastResponse
 		},
 		Timeout: time.Second * 30,
-	}
-	httpClient3 = &http.Client{
-		CheckRedirect: func(req *http.Request, via []*http.Request) error {
-			return http.ErrUseLastResponse
-		},
-		Timeout:   time.Second * 30,
-		Transport: &http3.RoundTripper{},
 	}
 
 	hostStatus = new(atomic.Bool)
@@ -622,12 +614,10 @@ func checkAltSvc(start time.Time, altSvcStr string, taskUrl string, result *pb.T
 
 	altAuthorityHost := ""
 	altAuthorityPort := ""
-	altAuthorityProtocol := ""
 	for _, altSvc := range altSvcList {
 		altAuthorityPort = altSvc.AltAuthority.Port
 		if altSvc.AltAuthority.Host != "" {
 			altAuthorityHost = altSvc.AltAuthority.Host
-			altAuthorityProtocol = altSvc.ProtocolID
 			break
 		}
 	}
@@ -644,9 +634,6 @@ func checkAltSvc(start time.Time, altSvcStr string, taskUrl string, result *pb.T
 	req.Host = originalHost
 
 	client := httpClient
-	if strings.HasPrefix(altAuthorityProtocol, "h3") {
-		client = httpClient3
-	}
 	resp, err := client.Do(req)
 
 	checkHttpResp(altAuthorityUrl, start, resp, err, result)
