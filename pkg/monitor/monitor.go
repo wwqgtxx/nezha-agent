@@ -21,10 +21,10 @@ import (
 	"github.com/shirou/gopsutil/v4/process"
 	"github.com/shirou/gopsutil/v4/sensors"
 
-	"github.com/nezhahq/agent/model"
-	"github.com/nezhahq/agent/pkg/gpu"
-	gpustat "github.com/nezhahq/agent/pkg/gpu/stat"
-	"github.com/nezhahq/agent/pkg/util"
+	"github.com/wwqgtxx/nezha-agent/model"
+	"github.com/wwqgtxx/nezha-agent/pkg/gpu"
+	gpustat "github.com/wwqgtxx/nezha-agent/pkg/gpu/stat"
+	"github.com/wwqgtxx/nezha-agent/pkg/util"
 )
 
 var (

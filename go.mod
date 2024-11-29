@@ -1,4 +1,4 @@
-module github.com/nezhahq/agent
+module github.com/wwqgtxx/nezha-agent
 
 go 1.20
 

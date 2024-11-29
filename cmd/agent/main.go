@@ -32,14 +32,14 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/resolver"
 
-	"github.com/nezhahq/agent/model"
-	fm "github.com/nezhahq/agent/pkg/fm"
-	"github.com/nezhahq/agent/pkg/monitor"
-	"github.com/nezhahq/agent/pkg/processgroup"
-	"github.com/nezhahq/agent/pkg/pty"
-	"github.com/nezhahq/agent/pkg/util"
-	utlsx "github.com/nezhahq/agent/pkg/utls"
-	pb "github.com/nezhahq/agent/proto"
+	"github.com/wwqgtxx/nezha-agent/model"
+	fm "github.com/wwqgtxx/nezha-agent/pkg/fm"
+	"github.com/wwqgtxx/nezha-agent/pkg/monitor"
+	"github.com/wwqgtxx/nezha-agent/pkg/processgroup"
+	"github.com/wwqgtxx/nezha-agent/pkg/pty"
+	"github.com/wwqgtxx/nezha-agent/pkg/util"
+	utlsx "github.com/wwqgtxx/nezha-agent/pkg/utls"
+	pb "github.com/wwqgtxx/nezha-agent/proto"
 )
 
 // Agent 运行时参数。如需添加新参数，记得同时在 service.go 中添加
@@ -474,9 +474,9 @@ func doSelfUpdate(useLocalVersion bool) {
 	var latest *selfupdate.Release
 	var err error
 	if monitor.CachedCountryCode != "cn" && !agentCliParam.UseGiteeToUpgrade {
-		latest, err = selfupdate.UpdateSelf(v, "nezhahq/agent")
+		latest, err = selfupdate.UpdateSelf(v, "wwqgtxx/nezha-agent")
 	} else {
-		latest, err = selfupdate.UpdateSelfGitee(v, "naibahq/agent")
+		latest, err = selfupdate.UpdateSelfGitee(v, "wwqgtxx/nezha-agent")
 	}
 	if err != nil {
 		printf("更新失败: %v", err)

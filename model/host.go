@@ -1,7 +1,7 @@
 package model
 
 import (
-	pb "github.com/nezhahq/agent/proto"
+	pb "github.com/wwqgtxx/nezha-agent/proto"
 )
 
 type SensorTemperature struct {
